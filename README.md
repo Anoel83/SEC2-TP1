@@ -9,6 +9,7 @@ cmake -S . -B build
 cmake --build build
 ctest --test-dir build --output-on-failure   # jeux d'essais
 cmake --build build --target run             # démonstration sur data/
+cmake --build build --target benchmark && ./build/benchmark data --tout   # comparaison des conteneurs
 ```
 
 Les exécutables sont `build/tp1` (argument : dossier des textes, `data` par

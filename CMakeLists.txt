@@ -37,3 +37,8 @@ add_custom_target(run
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     USES_TERMINAL
 )
+
+# Comparaison des conteneurs (justification du choix de std::map)
+# cmake --build build --target benchmark && ./build/benchmark data --tout
+add_executable(benchmark EXCLUDE_FROM_ALL bench/benchmark_conteneurs.cpp)
+target_link_libraries(benchmark PRIVATE lexique)
