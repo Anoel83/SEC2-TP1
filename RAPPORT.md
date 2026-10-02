@@ -11,8 +11,17 @@
 | `tests/tests.cpp` | jeux d'essais automatiques (61 assertions) |
 | `tests/petit1.txt`, `tests/petit2.txt` | petits textes dont le lexique est connu à la main |
 | `data/*.txt` | textes de Victor Hugo fournis |
+| `CMakeLists.txt`, `Makefile` | build (CMake ou make) |
 
-Compilation et exécution (C++17, g++ ou clang++) :
+Compilation et exécution (C++17) avec CMake :
+
+```sh
+cmake -S . -B build && cmake --build build
+ctest --test-dir build --output-on-failure   # jeux d'essais
+cmake --build build --target run             # démonstration sur data/
+```
+
+ou avec le `Makefile` :
 
 ```sh
 make          # construit ./tp1 et ./tests_tp1
