@@ -26,13 +26,9 @@ endif()
 add_executable(tp1 src/main.cpp)
 target_link_libraries(tp1 PRIVATE lexique)
 
-# Jeux d'essais
-add_executable(tests_tp1 tests/tests.cpp)
-target_link_libraries(tests_tp1 PRIVATE lexique)
-
+# Jeux d'essais (voir tests/CMakeLists.txt)
 enable_testing()
-add_test(NAME tests_lexique
-         COMMAND tests_tp1 ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+add_subdirectory(tests)
 
 # cmake --build build --target run : lance la démonstration sur data/
 add_custom_target(run

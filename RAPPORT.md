@@ -11,7 +11,7 @@
 | `tests/tests.cpp` | jeux d'essais automatiques (61 assertions) |
 | `tests/petit1.txt`, `tests/petit2.txt` | petits textes dont le lexique est connu à la main |
 | `data/*.txt` | textes de Victor Hugo fournis |
-| `CMakeLists.txt`, `Makefile` | build (CMake ou make) |
+| `CMakeLists.txt`, `tests/CMakeLists.txt` | build CMake (projet / tests) |
 
 Compilation et exécution (C++17) avec CMake :
 
@@ -19,14 +19,6 @@ Compilation et exécution (C++17) avec CMake :
 cmake -S . -B build && cmake --build build
 ctest --test-dir build --output-on-failure   # jeux d'essais
 cmake --build build --target run             # démonstration sur data/
-```
-
-ou avec le `Makefile` :
-
-```sh
-make          # construit ./tp1 et ./tests_tp1
-make test     # lance les jeux d'essais
-make run      # lance la démonstration sur data/
 ```
 
 ---
@@ -50,7 +42,7 @@ dont 23 000 différents, soit de l'ordre de 10¹⁰ comparaisons. `unordered_map
 serait légèrement plus rapide à la construction, mais `map` garde les mots
 triés, ce qui donne un fichier de sortie lisible et permet de fusionner et
 de faire la différence de deux lexiques par un simple parcours linéaire.
-Mesures (programme `tp1`, `-O2`) :
+Mesures (programme `tp1`, build Release) :
 
 | | *Les Misérables* | *Notre-Dame de Paris* |
 |---|---|---|
@@ -232,7 +224,7 @@ le mot apparaît ; c'est le comportement choisi (union).
 
 ## 3. Jeux d'essais
 
-### 3.1 Tests automatiques (`make test`)
+### 3.1 Tests automatiques (`ctest`)
 
 `tests/petit1.txt` :
 
@@ -270,7 +262,7 @@ A cat sees a bird.
 Résultat : `61/61 tests reussis` (également vérifié sans erreur avec
 AddressSanitizer et UndefinedBehaviorSanitizer).
 
-### 3.2 Démonstration sur les romans (`make run`)
+### 3.2 Démonstration sur les romans (cible `run`)
 
 ```
 === 1. Creation des lexiques ===
